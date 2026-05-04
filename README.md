@@ -42,37 +42,6 @@ This script:
 - Includes the icon and Info.plist
 - Generates output ready for distribution
 
-## Icon Setup
-
-### Option 1: Generate Icon Automatically (Python)
-
-If you have Python 3 with Pillow installed:
-
-```bash
-./generate-icon.py
-./create-icon.zsh icon.png
-mkdir -p Resources
-cp icon.icns Resources/AppIcon.icns
-./deploy.zsh
-```
-
-### Option 2: Manual Icon Creation
-
-1. Create or prepare a 512x512 PNG image (transparent background recommended)
-2. Convert to .icns format:
-   ```bash
-   ./create-icon.zsh your-icon.png
-   ```
-3. Copy to Resources:
-   ```bash
-   mkdir -p Resources
-   cp icon.icns Resources/AppIcon.icns
-   ```
-4. Deploy:
-   ```bash
-   ./deploy.zsh
-   ```
-
 ## Running
 
 ### From Source (Debug)
