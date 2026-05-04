@@ -1,0 +1,25 @@
+{
+   "configurations": [
+      {},
+      {
+         "type": "swift",
+         "request": "launch",
+         "args": [],
+         "cwd": "${workspaceFolder:TransparentRuler}",
+         "name": "Debug TransparentRuler",
+         "target": "TransparentRuler",
+         "configuration": "debug",
+         "preLaunchTask": "swift: Build Debug TransparentRuler"
+      },
+      {
+         "type": "swift",
+         "request": "launch",
+         "args": [],
+         "cwd": "${workspaceFolder:TransparentRuler}",
+         "name": "Release TransparentRuler",
+         "target": "TransparentRuler",
+         "configuration": "release",
+         "preLaunchTask": "swift: Build Release TransparentRuler"
+      }
+   ]
+}

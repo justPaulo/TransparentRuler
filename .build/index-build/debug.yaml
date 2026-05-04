@@ -1,0 +1,47 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "TransparentRuler-arm64-apple-macosx-debug.module": ["<TransparentRuler-arm64-apple-macosx-debug.module>"]
+  "main": ["<TransparentRuler-arm64-apple-macosx-debug.module>"]
+  "test": ["<TransparentRuler-arm64-apple-macosx-debug.module>"]
+default: "main"
+nodes:
+  "/Users/pnascim/Projects/TransparentRuler/Sources/TransparentRuler/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/TransparentRuler.build/sources":
+    tool: write-auxiliary-file
+    inputs: ["<sources-file-list>","/Users/pnascim/Projects/TransparentRuler/Sources/TransparentRuler/main.swift"]
+    outputs: ["/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/TransparentRuler.build/sources"]
+    description: "Write auxiliary file /Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/TransparentRuler.build/sources"
+
+  "/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt":
+    tool: write-auxiliary-file
+    inputs: ["<swift-get-version>","/Library/Developer/CommandLineTools/usr/bin/swiftc"]
+    outputs: ["/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"]
+    always-out-of-date: "true"
+    description: "Write auxiliary file /Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+
+  "<TransparentRuler-arm64-apple-macosx-debug.module>":
+    tool: phony
+    inputs: ["/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/Modules/TransparentRuler.swiftmodule"]
+    outputs: ["<TransparentRuler-arm64-apple-macosx-debug.module>"]
+
+  "C.TransparentRuler-arm64-apple-macosx-debug.module":
+    tool: shell
+    inputs: ["/Users/pnascim/Projects/TransparentRuler/Sources/TransparentRuler/main.swift","/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt","/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/TransparentRuler.build/sources"]
+    outputs: ["/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/Modules/TransparentRuler.swiftmodule"]
+    description: "Compiling Swift Module 'TransparentRuler' (1 sources)"
+    args: ["/Library/Developer/CommandLineTools/usr/bin/swiftc","-module-name","TransparentRuler","-emit-dependencies","-emit-module","-emit-module-path","/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/Modules/TransparentRuler.swiftmodule","-output-file-map","/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/TransparentRuler.build/output-file-map.json","-incremental","@/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/TransparentRuler.build/sources","-I","/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/Modules","-target","arm64-apple-macosx14.0","-incremental","-enable-batch-mode","-serialize-diagnostics","-Onone","-enable-testing","-j8","-DSWIFT_PACKAGE","-DDEBUG","-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE","-module-cache-path","/Users/pnascim/Projects/TransparentRuler/.build/index-build/arm64-apple-macosx/debug/ModuleCache","-parseable-output","-Xfrontend","-entry-point-function-name","-Xfrontend","TransparentRuler_main","-parse-as-library","-swift-version","5","-Xfrontend","-experimental-lazy-typecheck","-Xfrontend","-experimental-skip-all-function-bodies","-Xfrontend","-experimental-allow-module-with-compiler-errors","-Xfrontend","-empty-abi-descriptor","-I","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-L","/Library/Developer/CommandLineTools/Library/Developer/Frameworks","-plugin-path","/Library/Developer/CommandLineTools/usr/lib/swift/host/plugins/testing","-sdk","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-g","-Xcc","-isysroot","-Xcc","/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk","-Xcc","-fPIC","-Xcc","-g","-package-name","transparentruler"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/pnascim/Projects/TransparentRuler/Sources/TransparentRuler/","/Users/pnascim/Projects/TransparentRuler/Package.swift","/Users/pnascim/Projects/TransparentRuler/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+
