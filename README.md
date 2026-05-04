@@ -79,10 +79,8 @@ TransparentRuler/
 ├── Package.swift
 ├── README.md
 ├── deploy.zsh               # Production deployment script
-├── create-icon.zsh          # Icon converter utility
-├── generate-icon.py         # Simple icon generator
 ├── Resources/               # Icon resources
-│   └── AppIcon.icns        # App icon (generated)
+│   └── AppIcon.icns         # App icon
 └── Sources/
     └── TransparentRuler/
         └── main.swift
